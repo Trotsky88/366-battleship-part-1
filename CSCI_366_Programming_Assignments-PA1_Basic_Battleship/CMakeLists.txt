@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(CSCI_366_Programming_Assignments_PA2_Bit_Board_Storage)
+project(CSCI_366_Programming_Assignments_PA1_Basic_Battleship)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -36,7 +36,7 @@ include_directories(googletest/googletest/src)
 include_directories(googletest/googletest/test)
 include_directories(src)
 
-add_executable(CSCI_366_Programming_Assignments_PA2_Bit_Board_Storage
+add_executable(CSCI_366_Programming_Assignments_PA1_Basic_Battleship
         cereal/include/cereal/archives/adapters.hpp
         cereal/include/cereal/archives/binary.hpp
         cereal/include/cereal/archives/json.hpp
