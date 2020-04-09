@@ -20,8 +20,8 @@
 Client::~Client() {
 }
 
-void Client::initialize(unsigned int player, unsigned int board_size){
 
+void Client::initialize(unsigned int player, unsigned int board_size){
     if(player > 2 || player <1){
         throw ClientException("Wrong");
     }else initialized = true;
@@ -66,7 +66,6 @@ int Client::get_result() {
 
 
 void Client::update_action_board(int result, unsigned int x, unsigned int y) {
-
     vector<vector<int>> vec2(BOARD_SIZE, vector<int>(BOARD_SIZE, 0));
 
     vec2[y][x] = result;

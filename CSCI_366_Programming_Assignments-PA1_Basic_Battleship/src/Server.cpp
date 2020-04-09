@@ -17,13 +17,6 @@
 
 #include "common.hpp"
 #include "Server.hpp"
-#include <fstream>
-#include <string>
-#include <iostream>
-#include <cereal/archives/json.hpp>
-#include <cereal/types/vector.hpp>
-
-
 
 
 /**
@@ -39,18 +32,21 @@ int get_file_length(ifstream *file){
 char p1Board[BOARD_SIZE][BOARD_SIZE];
 char p2Board[BOARD_SIZE][BOARD_SIZE];
 
-void Server::initialize(unsigned int board_size,string p1_setup_board,string p2_setup_board){
+
+void Server::initialize(unsigned int board_size,
+                        string p1_setup_board,
+                        string p2_setup_board){
     this -> board_size = board_size;
     if(board_size != BOARD_SIZE){
-       throw ServerException("Wrong");
+        throw ServerException("Wrong");
     }
 
     if("player_1.setup_board.txt" != p1_setup_board or "player_2.setup_board.txt" != p2_setup_board){
         throw ServerException("Wrong");
     }
 
-   int i = 0;
-   int j = 0;
+    int i = 0;
+    int j = 0;
 
     ifstream p1File (p1_setup_board);
     ifstream p2File (p2_setup_board);
@@ -70,12 +66,17 @@ void Server::initialize(unsigned int board_size,string p1_setup_board,string p2_
             }
         }
     }
-
 }
 
 
-int Server::evaluate_shot(unsigned int player, unsigned int x, unsigned int y) {
+Server::~Server() {
+}
 
+
+BitArray2D *Server::scan_setup_board(string setup_board_name){
+}
+
+int Server::evaluate_shot(unsigned int player, unsigned int x, unsigned int y) {
     if(player >2 or player < 1){
         throw ServerException("Wrong");
     }
@@ -85,12 +86,12 @@ int Server::evaluate_shot(unsigned int player, unsigned int x, unsigned int y) {
     }
 
     if (player == 1){
-      if(p2Board[y][x] == '_'){
-          return MISS;
-      }
-      else {
-          return HIT;
-      }
+        if(p2Board[y][x] == '_'){
+            return MISS;
+        }
+        else {
+            return HIT;
+        }
     }
 }
 
