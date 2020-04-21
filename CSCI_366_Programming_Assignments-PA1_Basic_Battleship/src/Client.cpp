@@ -44,6 +44,7 @@ void Client::fire(unsigned int x, unsigned int y) {
 
 
 bool Client::result_available() {
+
 }
 
 

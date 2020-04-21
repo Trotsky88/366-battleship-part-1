@@ -73,7 +73,18 @@ Server::~Server() {
 }
 
 
-BitArray2D *Server::scan_setup_board(string setup_board_name){
+BitArray2D *Server::scan_setup_board(string setup_board_name) {
+    p1_setup_board = new BitArray2D(BOARD_SIZE, BOARD_SIZE);
+    p2_setup_board = new BitArray2D(BOARD_SIZE, BOARD_SIZE);
+
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for ( int j = 0; j < BOARD_SIZE; j++){
+            if(p2Board[i][j] != '_'){
+                p2_setup_board->set(i,j);
+            }
+        }
+    }
+
 }
 
 int Server::evaluate_shot(unsigned int player, unsigned int x, unsigned int y) {
